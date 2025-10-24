@@ -80,6 +80,49 @@ vector <vector<int>> pascaltriangle(int row){
 
 }
 
+
+vector <int> next_permatuation(vector <int> &arr){
+    int n =arr.size();
+    int ind = -1;
+    for(int i = n-2 ; i>=0 ; i++){
+        if(arr[i] < arr[i+1]){
+            ind = i;
+            break;
+        }
+    }
+
+
+    if(ind ==-1){
+        reverse(arr.begin(), arr.end());
+        return;
+    }
+
+
+    for(int i =n-1 ; i >ind ; i++){
+        if(arr[i] > arr[ind]){
+            swap(arr[ind],arr[i]);
+            break;
+        }
+    }
+    reverse(arr.begin()+ind+1 , arr.end());
+}
+
+int maxSubArray(vector<int>& nums) {
+    int n = nums.size();
+    long long sum = 0;
+    long long maxi = INT_MIN;
+    for(int i =0 ; i<n ; i++){
+        sum += nums[i];
+        maxi = max(maxi , sum);
+        if(sum < 0){
+            sum = 0;
+        }
+        
+    }
+    return maxi;
+        
+}
+
 int main()
 {
     int rows, cols;
