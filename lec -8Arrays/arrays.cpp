@@ -123,6 +123,41 @@ int maxSubArray(vector<int>& nums) {
         
 }
 
+vector <int> sort012(vector <int> &arr ){
+    int n = arr.size();
+    int low = 0;
+    int mid = 0;
+    int high = n-1;
+    while (mid <=high){
+        if(arr[mid == 0]){
+            swap(arr[mid],arr[low]);
+            low++;
+            mid++;
+        }
+        else if (arr[mid] == 1){
+            mid++;
+        }
+        else{
+            swap(arr[mid], arr[high]);
+            high--;
+        }
+    }
+    return arr;
+}
+
+int stocksbuysell(vecot <int> &arr){
+    int n = arr.size();
+    int mini = arr[0];
+    int profit = 0;
+    for(int i=1 ; i<n ; i++){
+        int cost = arr[1]-mini;
+        profit = max(profit , cost);
+        mini = min(mini , arr[i]);
+    }
+    return profit;
+}
+
+
 int main()
 {
     int rows, cols;
